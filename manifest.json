@@ -1,0 +1,3090 @@
+{
+  "description": "Control Finder application through AppleScript with full class hierarchy support",
+  "dxt_version": "0.1",
+  "version": "0.1.0",
+  "long_description": "This enhanced extension allows you to control Finder through its official AppleScript API with complete class hierarchy support. Property getters and setters now include the full object path for precise targeting. Includes static data functions for exploring the application's complete class structure and command mappings.",
+  "author": {
+    "name": "StarDAE",
+    "email": "support@stardae.com"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "dummy": "temp"
+      }
+    }
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "display_name": "Finder (AppleScript)",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "npx @anthropic-ai/dxt pack"
+  },
+  "tools": [
+    {
+      "name": "save_for_window",
+      "description": "Save a window."
+    },
+    {
+      "name": "save_for_document",
+      "description": "Save a document."
+    },
+    {
+      "name": "get_name_of_application",
+      "description": "Get The name of the application."
+    },
+    {
+      "name": "get_frontmost_of_application",
+      "description": "Get Is this the active application?"
+    },
+    {
+      "name": "get_version_of_application",
+      "description": "Get The version number of the application."
+    },
+    {
+      "name": "get_name_of_document",
+      "description": "Get Its name. of document"
+    },
+    {
+      "name": "get_modified_of_document",
+      "description": "Get Has it been modified since the last save? of document"
+    },
+    {
+      "name": "get_file_of_document",
+      "description": "Get Its location on disk, if it has one. of document"
+    },
+    {
+      "name": "get_name_of_window",
+      "description": "Get The title of the window."
+    },
+    {
+      "name": "get_id_of_window",
+      "description": "Get The unique identifier of the window."
+    },
+    {
+      "name": "get_index_of_window",
+      "description": "Get The index of the window, ordered front to back."
+    },
+    {
+      "name": "set_index_of_window",
+      "description": "Set The index of the window, ordered front to back."
+    },
+    {
+      "name": "get_bounds_of_window",
+      "description": "Get The bounding rectangle of the window."
+    },
+    {
+      "name": "set_bounds_of_window",
+      "description": "Set The bounding rectangle of the window."
+    },
+    {
+      "name": "get_closeable_of_window",
+      "description": "Get Does the window have a close button?"
+    },
+    {
+      "name": "get_miniaturizable_of_window",
+      "description": "Get Does the window have a minimize button?"
+    },
+    {
+      "name": "get_miniaturized_of_window",
+      "description": "Get Is the window minimized right now?"
+    },
+    {
+      "name": "set_miniaturized_of_window",
+      "description": "Set Is the window minimized right now?"
+    },
+    {
+      "name": "get_resizable_of_window",
+      "description": "Get Can the window be resized?"
+    },
+    {
+      "name": "get_visible_of_window",
+      "description": "Get Is the window visible right now?"
+    },
+    {
+      "name": "set_visible_of_window",
+      "description": "Set Is the window visible right now?"
+    },
+    {
+      "name": "get_zoomable_of_window",
+      "description": "Get Does the window have a zoom button?"
+    },
+    {
+      "name": "get_zoomed_of_window",
+      "description": "Get Is the window zoomed right now?"
+    },
+    {
+      "name": "set_zoomed_of_window",
+      "description": "Set Is the window zoomed right now?"
+    },
+    {
+      "name": "get_document_of_window",
+      "description": "Get The document whose contents are displayed in the window."
+    },
+    {
+      "name": "open",
+      "description": "Open the specified object(s)"
+    },
+    {
+      "name": "print_for_window",
+      "description": "Print the specified object(s) for window"
+    },
+    {
+      "name": "print_for_document",
+      "description": "Print the specified object(s) for document"
+    },
+    {
+      "name": "quit",
+      "description": "Quit the Finder"
+    },
+    {
+      "name": "activate",
+      "description": "Activate the specified window (or the Finder)"
+    },
+    {
+      "name": "close_for_window",
+      "description": "Close a window"
+    },
+    {
+      "name": "close_for_document",
+      "description": "Close a document"
+    },
+    {
+      "name": "count_file_of_container",
+      "description": "Return the number of elements of a particular class within a file"
+    },
+    {
+      "name": "count_desk_accessory_process",
+      "description": "Return the number of elements of a particular class within a desk accessory process"
+    },
+    {
+      "name": "count_list_view_options",
+      "description": "Return the number of elements of a particular class within a list view options"
+    },
+    {
+      "name": "count_internet_location_file_of_container",
+      "description": "Return the number of elements of a particular class within a internet location file"
+    },
+    {
+      "name": "count_window",
+      "description": "Return the number of elements of a particular class within a window"
+    },
+    {
+      "name": "count_desktop_object",
+      "description": "Return the number of elements of a particular class within a desktop-object"
+    },
+    {
+      "name": "count_preferences",
+      "description": "Return the number of elements of a particular class within a preferences"
+    },
+    {
+      "name": "count_label",
+      "description": "Return the number of elements of a particular class within a label"
+    },
+    {
+      "name": "count_folder_of_container",
+      "description": "Return the number of elements of a particular class within a folder"
+    },
+    {
+      "name": "count_process",
+      "description": "Return the number of elements of a particular class within a process"
+    },
+    {
+      "name": "count_icon_view_options",
+      "description": "Return the number of elements of a particular class within a icon view options"
+    },
+    {
+      "name": "count_container_of_container",
+      "description": "Return the number of elements of a particular class within a container"
+    },
+    {
+      "name": "count_finder_window",
+      "description": "Return the number of elements of a particular class within a Finder window"
+    },
+    {
+      "name": "count_column_view_options",
+      "description": "Return the number of elements of a particular class within a column view options"
+    },
+    {
+      "name": "count_column_of_list_view_options",
+      "description": "Return the number of elements of a particular class within a column of list view options"
+    },
+    {
+      "name": "count_preferences_window",
+      "description": "Return the number of elements of a particular class within a preferences window"
+    },
+    {
+      "name": "count_computer_object",
+      "description": "Return the number of elements of a particular class within a computer-object"
+    },
+    {
+      "name": "count_alias_file_of_container",
+      "description": "Return the number of elements of a particular class within a alias file"
+    },
+    {
+      "name": "count_application_file_of_container",
+      "description": "Return the number of elements of a particular class within a application file"
+    },
+    {
+      "name": "count_information_window",
+      "description": "Return the number of elements of a particular class within a information window"
+    },
+    {
+      "name": "count_item_of_container",
+      "description": "Return the number of elements of a particular class within a item"
+    },
+    {
+      "name": "count_application_process",
+      "description": "Return the number of elements of a particular class within a application process"
+    },
+    {
+      "name": "count_clipping_of_container",
+      "description": "Return the number of elements of a particular class within a clipping"
+    },
+    {
+      "name": "count_document_file_of_container",
+      "description": "Return the number of elements of a particular class within a document file"
+    },
+    {
+      "name": "count_alias_list",
+      "description": "Return the number of elements of a particular class within a alias list"
+    },
+    {
+      "name": "count_desktop_window",
+      "description": "Return the number of elements of a particular class within a desktop window"
+    },
+    {
+      "name": "count_icon_family",
+      "description": "Return the number of elements of a particular class within a icon family"
+    },
+    {
+      "name": "count_package_of_container",
+      "description": "Return the number of elements of a particular class within a package"
+    },
+    {
+      "name": "count_clipping_window",
+      "description": "Return the number of elements of a particular class within a clipping window"
+    },
+    {
+      "name": "count_document",
+      "description": "Return the number of elements of a particular class within a document"
+    },
+    {
+      "name": "count_trash_object",
+      "description": "Return the number of elements of a particular class within a trash-object"
+    },
+    {
+      "name": "count_disk_of_desktop_object",
+      "description": "Return the number of elements of a particular class within a disk"
+    },
+    {
+      "name": "data_size_file_of_container",
+      "description": "Return the size in bytes of a file"
+    },
+    {
+      "name": "data_size_desk_accessory_process",
+      "description": "Return the size in bytes of a desk accessory process"
+    },
+    {
+      "name": "data_size_list_view_options",
+      "description": "Return the size in bytes of a list view options"
+    },
+    {
+      "name": "data_size_internet_location_file_of_container",
+      "description": "Return the size in bytes of a internet location file"
+    },
+    {
+      "name": "data_size_window",
+      "description": "Return the size in bytes of a window"
+    },
+    {
+      "name": "data_size_desktop_object",
+      "description": "Return the size in bytes of a desktop-object"
+    },
+    {
+      "name": "data_size_preferences",
+      "description": "Return the size in bytes of a preferences"
+    },
+    {
+      "name": "data_size_label",
+      "description": "Return the size in bytes of a label"
+    },
+    {
+      "name": "data_size_folder_of_container",
+      "description": "Return the size in bytes of a folder"
+    },
+    {
+      "name": "data_size_process",
+      "description": "Return the size in bytes of a process"
+    },
+    {
+      "name": "data_size_icon_view_options",
+      "description": "Return the size in bytes of a icon view options"
+    },
+    {
+      "name": "data_size_container_of_container",
+      "description": "Return the size in bytes of a container"
+    },
+    {
+      "name": "data_size_finder_window",
+      "description": "Return the size in bytes of a Finder window"
+    },
+    {
+      "name": "data_size_column_view_options",
+      "description": "Return the size in bytes of a column view options"
+    },
+    {
+      "name": "data_size_column_of_list_view_options",
+      "description": "Return the size in bytes of a column of list view options"
+    },
+    {
+      "name": "data_size_preferences_window",
+      "description": "Return the size in bytes of a preferences window"
+    },
+    {
+      "name": "data_size_computer_object",
+      "description": "Return the size in bytes of a computer-object"
+    },
+    {
+      "name": "data_size_alias_file_of_container",
+      "description": "Return the size in bytes of a alias file"
+    },
+    {
+      "name": "data_size_application_file_of_container",
+      "description": "Return the size in bytes of a application file"
+    },
+    {
+      "name": "data_size_information_window",
+      "description": "Return the size in bytes of a information window"
+    },
+    {
+      "name": "data_size_item_of_container",
+      "description": "Return the size in bytes of a item"
+    },
+    {
+      "name": "data_size_application_process",
+      "description": "Return the size in bytes of a application process"
+    },
+    {
+      "name": "data_size_clipping_of_container",
+      "description": "Return the size in bytes of a clipping"
+    },
+    {
+      "name": "data_size_document_file_of_container",
+      "description": "Return the size in bytes of a document file"
+    },
+    {
+      "name": "data_size_alias_list",
+      "description": "Return the size in bytes of a alias list"
+    },
+    {
+      "name": "data_size_desktop_window",
+      "description": "Return the size in bytes of a desktop window"
+    },
+    {
+      "name": "data_size_icon_family",
+      "description": "Return the size in bytes of a icon family"
+    },
+    {
+      "name": "data_size_package_of_container",
+      "description": "Return the size in bytes of a package"
+    },
+    {
+      "name": "data_size_clipping_window",
+      "description": "Return the size in bytes of a clipping window"
+    },
+    {
+      "name": "data_size_document",
+      "description": "Return the size in bytes of a document"
+    },
+    {
+      "name": "data_size_trash_object",
+      "description": "Return the size in bytes of a trash-object"
+    },
+    {
+      "name": "data_size_disk_of_desktop_object",
+      "description": "Return the size in bytes of a disk"
+    },
+    {
+      "name": "delete",
+      "description": "Move an item from its container to the trash"
+    },
+    {
+      "name": "duplicate",
+      "description": "Duplicate one or more object(s)"
+    },
+    {
+      "name": "exists",
+      "description": "Verify if an object exists"
+    },
+    {
+      "name": "make_file_of_container",
+      "description": "Make a new element for file"
+    },
+    {
+      "name": "make_desk_accessory_process",
+      "description": "Make a new element for desk accessory process"
+    },
+    {
+      "name": "make_list_view_options",
+      "description": "Make a new element for list view options"
+    },
+    {
+      "name": "make_internet_location_file_of_container",
+      "description": "Make a new element for internet location file"
+    },
+    {
+      "name": "make_window",
+      "description": "Make a new element for window"
+    },
+    {
+      "name": "make_desktop_object",
+      "description": "Make a new element for desktop-object"
+    },
+    {
+      "name": "make_preferences",
+      "description": "Make a new element for preferences"
+    },
+    {
+      "name": "make_label",
+      "description": "Make a new element for label"
+    },
+    {
+      "name": "make_folder_of_container",
+      "description": "Make a new element for folder"
+    },
+    {
+      "name": "make_process",
+      "description": "Make a new element for process"
+    },
+    {
+      "name": "make_icon_view_options",
+      "description": "Make a new element for icon view options"
+    },
+    {
+      "name": "make_container_of_container",
+      "description": "Make a new element for container"
+    },
+    {
+      "name": "make_finder_window",
+      "description": "Make a new element for Finder window"
+    },
+    {
+      "name": "make_column_view_options",
+      "description": "Make a new element for column view options"
+    },
+    {
+      "name": "make_column_of_list_view_options",
+      "description": "Make a new element for column of list view options"
+    },
+    {
+      "name": "make_preferences_window",
+      "description": "Make a new element for preferences window"
+    },
+    {
+      "name": "make_computer_object",
+      "description": "Make a new element for computer-object"
+    },
+    {
+      "name": "make_alias_file_of_container",
+      "description": "Make a new element for alias file"
+    },
+    {
+      "name": "make_application_file_of_container",
+      "description": "Make a new element for application file"
+    },
+    {
+      "name": "make_information_window",
+      "description": "Make a new element for information window"
+    },
+    {
+      "name": "make_item_of_container",
+      "description": "Make a new element for item"
+    },
+    {
+      "name": "make_application_process",
+      "description": "Make a new element for application process"
+    },
+    {
+      "name": "make_clipping_of_container",
+      "description": "Make a new element for clipping"
+    },
+    {
+      "name": "make_document_file_of_container",
+      "description": "Make a new element for document file"
+    },
+    {
+      "name": "make_alias_list",
+      "description": "Make a new element for alias list"
+    },
+    {
+      "name": "make_desktop_window",
+      "description": "Make a new element for desktop window"
+    },
+    {
+      "name": "make_icon_family",
+      "description": "Make a new element for icon family"
+    },
+    {
+      "name": "make_package_of_container",
+      "description": "Make a new element for package"
+    },
+    {
+      "name": "make_clipping_window",
+      "description": "Make a new element for clipping window"
+    },
+    {
+      "name": "make_document",
+      "description": "Make a new element for document"
+    },
+    {
+      "name": "make_trash_object",
+      "description": "Make a new element for trash-object"
+    },
+    {
+      "name": "make_disk_of_desktop_object",
+      "description": "Make a new element for disk"
+    },
+    {
+      "name": "move",
+      "description": "Move object(s) to a new location"
+    },
+    {
+      "name": "select",
+      "description": "Select the specified object(s)"
+    },
+    {
+      "name": "openvirtuallocation",
+      "description": "Private event to open a virtual location"
+    },
+    {
+      "name": "copy",
+      "description": "(NOT AVAILABLE YET) Copy the selected items to the clipboard (the Finder must be the front application)"
+    },
+    {
+      "name": "sort",
+      "description": "Return the specified object(s) in a sorted list"
+    },
+    {
+      "name": "get_clipboard_of_application",
+      "description": "Get (NOT AVAILABLE YET) the Finder’s clipboard window of application"
+    },
+    {
+      "name": "get_visible_of_application",
+      "description": "Get Is the Finder’s layer visible? of application"
+    },
+    {
+      "name": "set_visible_of_application",
+      "description": "Set Is the Finder’s layer visible? of application"
+    },
+    {
+      "name": "get_selection_of_application",
+      "description": "Get the selection in the frontmost Finder window of application"
+    },
+    {
+      "name": "set_selection_of_application",
+      "description": "Set the selection in the frontmost Finder window of application"
+    },
+    {
+      "name": "get_insertion_location_of_application",
+      "description": "Get the container in which a new folder would appear if “New Folder” was selected of application"
+    },
+    {
+      "name": "get_product_version_of_application",
+      "description": "Get the version of the System software running on this computer of application"
+    },
+    {
+      "name": "get_startup_disk_of_application",
+      "description": "Get the startup disk of application"
+    },
+    {
+      "name": "get_desktop_of_application",
+      "description": "Get the desktop of application"
+    },
+    {
+      "name": "get_trash_of_application",
+      "description": "Get the trash of application"
+    },
+    {
+      "name": "get_home_of_application",
+      "description": "Get the home directory of application"
+    },
+    {
+      "name": "get_computer_container_of_application",
+      "description": "Get the computer location (as in Go > Computer) of application"
+    },
+    {
+      "name": "get_finder_preferences_of_application",
+      "description": "Get Various preferences that apply to the Finder as a whole of application"
+    },
+    {
+      "name": "clean_up",
+      "description": "Arrange items in window nicely (only applies to open windows in icon view that are not kept arranged)"
+    },
+    {
+      "name": "eject",
+      "description": "Eject the specified disk(s)"
+    },
+    {
+      "name": "empty",
+      "description": "Empty the trash"
+    },
+    {
+      "name": "erase",
+      "description": "(NOT AVAILABLE) Erase the specified disk(s)"
+    },
+    {
+      "name": "reveal",
+      "description": "Bring the specified object(s) into view"
+    },
+    {
+      "name": "update",
+      "description": "Update the display of the specified object(s) to match their on-disk representation"
+    },
+    {
+      "name": "get_name_of_item",
+      "description": "Get the name of the item"
+    },
+    {
+      "name": "set_name_of_item",
+      "description": "Set the name of the item"
+    },
+    {
+      "name": "get_name_of_item_of_container",
+      "description": "Get the name of the item"
+    },
+    {
+      "name": "set_name_of_item_of_container",
+      "description": "Set the name of the item"
+    },
+    {
+      "name": "get_name_of_item_of_disk",
+      "description": "Get the name of the item"
+    },
+    {
+      "name": "set_name_of_item_of_disk",
+      "description": "Set the name of the item"
+    },
+    {
+      "name": "get_name_of_item_of_folder",
+      "description": "Get the name of the item"
+    },
+    {
+      "name": "set_name_of_item_of_folder",
+      "description": "Set the name of the item"
+    },
+    {
+      "name": "get_name_of_item_of_desktop_object",
+      "description": "Get the name of the item"
+    },
+    {
+      "name": "set_name_of_item_of_desktop_object",
+      "description": "Set the name of the item"
+    },
+    {
+      "name": "get_name_of_item_of_trash_object",
+      "description": "Get the name of the item"
+    },
+    {
+      "name": "set_name_of_item_of_trash_object",
+      "description": "Set the name of the item"
+    },
+    {
+      "name": "get_displayed_name_of_item",
+      "description": "Get the user-visible name of the item"
+    },
+    {
+      "name": "get_displayed_name_of_item_of_container",
+      "description": "Get the user-visible name of the item"
+    },
+    {
+      "name": "get_displayed_name_of_item_of_disk",
+      "description": "Get the user-visible name of the item"
+    },
+    {
+      "name": "get_displayed_name_of_item_of_folder",
+      "description": "Get the user-visible name of the item"
+    },
+    {
+      "name": "get_displayed_name_of_item_of_desktop_object",
+      "description": "Get the user-visible name of the item"
+    },
+    {
+      "name": "get_displayed_name_of_item_of_trash_object",
+      "description": "Get the user-visible name of the item"
+    },
+    {
+      "name": "get_name_extension_of_item",
+      "description": "Get the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "set_name_extension_of_item",
+      "description": "Set the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "get_name_extension_of_item_of_container",
+      "description": "Get the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "set_name_extension_of_item_of_container",
+      "description": "Set the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "get_name_extension_of_item_of_disk",
+      "description": "Get the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "set_name_extension_of_item_of_disk",
+      "description": "Set the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "get_name_extension_of_item_of_folder",
+      "description": "Get the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "set_name_extension_of_item_of_folder",
+      "description": "Set the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "get_name_extension_of_item_of_desktop_object",
+      "description": "Get the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "set_name_extension_of_item_of_desktop_object",
+      "description": "Set the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "get_name_extension_of_item_of_trash_object",
+      "description": "Get the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "set_name_extension_of_item_of_trash_object",
+      "description": "Set the name extension of the item (such as “txt”)"
+    },
+    {
+      "name": "get_extension_hidden_of_item",
+      "description": "Get Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "set_extension_hidden_of_item",
+      "description": "Set Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "get_extension_hidden_of_item_of_container",
+      "description": "Get Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "set_extension_hidden_of_item_of_container",
+      "description": "Set Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "get_extension_hidden_of_item_of_disk",
+      "description": "Get Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "set_extension_hidden_of_item_of_disk",
+      "description": "Set Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "get_extension_hidden_of_item_of_folder",
+      "description": "Get Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "set_extension_hidden_of_item_of_folder",
+      "description": "Set Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "get_extension_hidden_of_item_of_desktop_object",
+      "description": "Get Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "set_extension_hidden_of_item_of_desktop_object",
+      "description": "Set Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "get_extension_hidden_of_item_of_trash_object",
+      "description": "Get Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "set_extension_hidden_of_item_of_trash_object",
+      "description": "Set Is the item's extension hidden from the user?"
+    },
+    {
+      "name": "get_index_of_item",
+      "description": "Get the index in the front-to-back ordering within its container of item"
+    },
+    {
+      "name": "get_index_of_item_of_container",
+      "description": "Get the index in the front-to-back ordering within its container of item"
+    },
+    {
+      "name": "get_index_of_item_of_disk",
+      "description": "Get the index in the front-to-back ordering within its container of item"
+    },
+    {
+      "name": "get_index_of_item_of_folder",
+      "description": "Get the index in the front-to-back ordering within its container of item"
+    },
+    {
+      "name": "get_index_of_item_of_desktop_object",
+      "description": "Get the index in the front-to-back ordering within its container of item"
+    },
+    {
+      "name": "get_index_of_item_of_trash_object",
+      "description": "Get the index in the front-to-back ordering within its container of item"
+    },
+    {
+      "name": "get_container_of_item",
+      "description": "Get the container of the item"
+    },
+    {
+      "name": "get_container_of_item_of_container",
+      "description": "Get the container of the item"
+    },
+    {
+      "name": "get_container_of_item_of_disk",
+      "description": "Get the container of the item"
+    },
+    {
+      "name": "get_container_of_item_of_folder",
+      "description": "Get the container of the item"
+    },
+    {
+      "name": "get_container_of_item_of_desktop_object",
+      "description": "Get the container of the item"
+    },
+    {
+      "name": "get_container_of_item_of_trash_object",
+      "description": "Get the container of the item"
+    },
+    {
+      "name": "get_disk_of_item",
+      "description": "Get the disk on which the item is stored"
+    },
+    {
+      "name": "get_disk_of_item_of_container",
+      "description": "Get the disk on which the item is stored"
+    },
+    {
+      "name": "get_disk_of_item_of_disk",
+      "description": "Get the disk on which the item is stored"
+    },
+    {
+      "name": "get_disk_of_item_of_folder",
+      "description": "Get the disk on which the item is stored"
+    },
+    {
+      "name": "get_disk_of_item_of_desktop_object",
+      "description": "Get the disk on which the item is stored"
+    },
+    {
+      "name": "get_disk_of_item_of_trash_object",
+      "description": "Get the disk on which the item is stored"
+    },
+    {
+      "name": "get_position_of_item",
+      "description": "Get the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_position_of_item",
+      "description": "Set the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_position_of_item_of_container",
+      "description": "Get the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_position_of_item_of_container",
+      "description": "Set the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_position_of_item_of_disk",
+      "description": "Get the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_position_of_item_of_disk",
+      "description": "Set the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_position_of_item_of_folder",
+      "description": "Get the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_position_of_item_of_folder",
+      "description": "Set the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_position_of_item_of_desktop_object",
+      "description": "Get the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_position_of_item_of_desktop_object",
+      "description": "Set the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_position_of_item_of_trash_object",
+      "description": "Get the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_position_of_item_of_trash_object",
+      "description": "Set the position of the item within its parent window (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_desktop_position_of_item",
+      "description": "Get the position of the item on the desktop"
+    },
+    {
+      "name": "set_desktop_position_of_item",
+      "description": "Set the position of the item on the desktop"
+    },
+    {
+      "name": "get_desktop_position_of_item_of_container",
+      "description": "Get the position of the item on the desktop"
+    },
+    {
+      "name": "set_desktop_position_of_item_of_container",
+      "description": "Set the position of the item on the desktop"
+    },
+    {
+      "name": "get_desktop_position_of_item_of_disk",
+      "description": "Get the position of the item on the desktop"
+    },
+    {
+      "name": "set_desktop_position_of_item_of_disk",
+      "description": "Set the position of the item on the desktop"
+    },
+    {
+      "name": "get_desktop_position_of_item_of_folder",
+      "description": "Get the position of the item on the desktop"
+    },
+    {
+      "name": "set_desktop_position_of_item_of_folder",
+      "description": "Set the position of the item on the desktop"
+    },
+    {
+      "name": "get_desktop_position_of_item_of_desktop_object",
+      "description": "Get the position of the item on the desktop"
+    },
+    {
+      "name": "set_desktop_position_of_item_of_desktop_object",
+      "description": "Set the position of the item on the desktop"
+    },
+    {
+      "name": "get_desktop_position_of_item_of_trash_object",
+      "description": "Get the position of the item on the desktop"
+    },
+    {
+      "name": "set_desktop_position_of_item_of_trash_object",
+      "description": "Set the position of the item on the desktop"
+    },
+    {
+      "name": "get_bounds_of_item",
+      "description": "Get the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_bounds_of_item",
+      "description": "Set the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_bounds_of_item_of_container",
+      "description": "Get the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_bounds_of_item_of_container",
+      "description": "Set the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_bounds_of_item_of_disk",
+      "description": "Get the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_bounds_of_item_of_disk",
+      "description": "Set the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_bounds_of_item_of_folder",
+      "description": "Get the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_bounds_of_item_of_folder",
+      "description": "Set the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_bounds_of_item_of_desktop_object",
+      "description": "Get the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_bounds_of_item_of_desktop_object",
+      "description": "Set the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_bounds_of_item_of_trash_object",
+      "description": "Get the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "set_bounds_of_item_of_trash_object",
+      "description": "Set the bounding rectangle of the item (can only be set for an item in a window viewed as icons or buttons)"
+    },
+    {
+      "name": "get_label_index_of_item",
+      "description": "Get the label of the item"
+    },
+    {
+      "name": "set_label_index_of_item",
+      "description": "Set the label of the item"
+    },
+    {
+      "name": "get_label_index_of_item_of_container",
+      "description": "Get the label of the item"
+    },
+    {
+      "name": "set_label_index_of_item_of_container",
+      "description": "Set the label of the item"
+    },
+    {
+      "name": "get_label_index_of_item_of_disk",
+      "description": "Get the label of the item"
+    },
+    {
+      "name": "set_label_index_of_item_of_disk",
+      "description": "Set the label of the item"
+    },
+    {
+      "name": "get_label_index_of_item_of_folder",
+      "description": "Get the label of the item"
+    },
+    {
+      "name": "set_label_index_of_item_of_folder",
+      "description": "Set the label of the item"
+    },
+    {
+      "name": "get_label_index_of_item_of_desktop_object",
+      "description": "Get the label of the item"
+    },
+    {
+      "name": "set_label_index_of_item_of_desktop_object",
+      "description": "Set the label of the item"
+    },
+    {
+      "name": "get_label_index_of_item_of_trash_object",
+      "description": "Get the label of the item"
+    },
+    {
+      "name": "set_label_index_of_item_of_trash_object",
+      "description": "Set the label of the item"
+    },
+    {
+      "name": "get_locked_of_item",
+      "description": "Get Is the file locked? of item"
+    },
+    {
+      "name": "set_locked_of_item",
+      "description": "Set Is the file locked? of item"
+    },
+    {
+      "name": "get_locked_of_item_of_container",
+      "description": "Get Is the file locked? of item"
+    },
+    {
+      "name": "set_locked_of_item_of_container",
+      "description": "Set Is the file locked? of item"
+    },
+    {
+      "name": "get_locked_of_item_of_disk",
+      "description": "Get Is the file locked? of item"
+    },
+    {
+      "name": "set_locked_of_item_of_disk",
+      "description": "Set Is the file locked? of item"
+    },
+    {
+      "name": "get_locked_of_item_of_folder",
+      "description": "Get Is the file locked? of item"
+    },
+    {
+      "name": "set_locked_of_item_of_folder",
+      "description": "Set Is the file locked? of item"
+    },
+    {
+      "name": "get_locked_of_item_of_desktop_object",
+      "description": "Get Is the file locked? of item"
+    },
+    {
+      "name": "set_locked_of_item_of_desktop_object",
+      "description": "Set Is the file locked? of item"
+    },
+    {
+      "name": "get_locked_of_item_of_trash_object",
+      "description": "Get Is the file locked? of item"
+    },
+    {
+      "name": "set_locked_of_item_of_trash_object",
+      "description": "Set Is the file locked? of item"
+    },
+    {
+      "name": "get_kind_of_item",
+      "description": "Get the kind of the item"
+    },
+    {
+      "name": "get_kind_of_item_of_container",
+      "description": "Get the kind of the item"
+    },
+    {
+      "name": "get_kind_of_item_of_disk",
+      "description": "Get the kind of the item"
+    },
+    {
+      "name": "get_kind_of_item_of_folder",
+      "description": "Get the kind of the item"
+    },
+    {
+      "name": "get_kind_of_item_of_desktop_object",
+      "description": "Get the kind of the item"
+    },
+    {
+      "name": "get_kind_of_item_of_trash_object",
+      "description": "Get the kind of the item"
+    },
+    {
+      "name": "get_description_of_item",
+      "description": "Get a description of the item"
+    },
+    {
+      "name": "get_description_of_item_of_container",
+      "description": "Get a description of the item"
+    },
+    {
+      "name": "get_description_of_item_of_disk",
+      "description": "Get a description of the item"
+    },
+    {
+      "name": "get_description_of_item_of_folder",
+      "description": "Get a description of the item"
+    },
+    {
+      "name": "get_description_of_item_of_desktop_object",
+      "description": "Get a description of the item"
+    },
+    {
+      "name": "get_description_of_item_of_trash_object",
+      "description": "Get a description of the item"
+    },
+    {
+      "name": "get_comment_of_item",
+      "description": "Get the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "set_comment_of_item",
+      "description": "Set the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "get_comment_of_item_of_container",
+      "description": "Get the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "set_comment_of_item_of_container",
+      "description": "Set the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "get_comment_of_item_of_disk",
+      "description": "Get the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "set_comment_of_item_of_disk",
+      "description": "Set the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "get_comment_of_item_of_folder",
+      "description": "Get the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "set_comment_of_item_of_folder",
+      "description": "Set the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "get_comment_of_item_of_desktop_object",
+      "description": "Get the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "set_comment_of_item_of_desktop_object",
+      "description": "Set the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "get_comment_of_item_of_trash_object",
+      "description": "Get the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "set_comment_of_item_of_trash_object",
+      "description": "Set the comment of the item, displayed in the “Get Info” window"
+    },
+    {
+      "name": "get_size_of_item",
+      "description": "Get the logical size of the item"
+    },
+    {
+      "name": "get_size_of_item_of_container",
+      "description": "Get the logical size of the item"
+    },
+    {
+      "name": "get_size_of_item_of_disk",
+      "description": "Get the logical size of the item"
+    },
+    {
+      "name": "get_size_of_item_of_folder",
+      "description": "Get the logical size of the item"
+    },
+    {
+      "name": "get_size_of_item_of_desktop_object",
+      "description": "Get the logical size of the item"
+    },
+    {
+      "name": "get_size_of_item_of_trash_object",
+      "description": "Get the logical size of the item"
+    },
+    {
+      "name": "get_physical_size_of_item",
+      "description": "Get the actual space used by the item on disk"
+    },
+    {
+      "name": "get_physical_size_of_item_of_container",
+      "description": "Get the actual space used by the item on disk"
+    },
+    {
+      "name": "get_physical_size_of_item_of_disk",
+      "description": "Get the actual space used by the item on disk"
+    },
+    {
+      "name": "get_physical_size_of_item_of_folder",
+      "description": "Get the actual space used by the item on disk"
+    },
+    {
+      "name": "get_physical_size_of_item_of_desktop_object",
+      "description": "Get the actual space used by the item on disk"
+    },
+    {
+      "name": "get_physical_size_of_item_of_trash_object",
+      "description": "Get the actual space used by the item on disk"
+    },
+    {
+      "name": "get_creation_date_of_item",
+      "description": "Get the date on which the item was created"
+    },
+    {
+      "name": "get_creation_date_of_item_of_container",
+      "description": "Get the date on which the item was created"
+    },
+    {
+      "name": "get_creation_date_of_item_of_disk",
+      "description": "Get the date on which the item was created"
+    },
+    {
+      "name": "get_creation_date_of_item_of_folder",
+      "description": "Get the date on which the item was created"
+    },
+    {
+      "name": "get_creation_date_of_item_of_desktop_object",
+      "description": "Get the date on which the item was created"
+    },
+    {
+      "name": "get_creation_date_of_item_of_trash_object",
+      "description": "Get the date on which the item was created"
+    },
+    {
+      "name": "get_modification_date_of_item",
+      "description": "Get the date on which the item was last modified"
+    },
+    {
+      "name": "set_modification_date_of_item",
+      "description": "Set the date on which the item was last modified"
+    },
+    {
+      "name": "get_modification_date_of_item_of_container",
+      "description": "Get the date on which the item was last modified"
+    },
+    {
+      "name": "set_modification_date_of_item_of_container",
+      "description": "Set the date on which the item was last modified"
+    },
+    {
+      "name": "get_modification_date_of_item_of_disk",
+      "description": "Get the date on which the item was last modified"
+    },
+    {
+      "name": "set_modification_date_of_item_of_disk",
+      "description": "Set the date on which the item was last modified"
+    },
+    {
+      "name": "get_modification_date_of_item_of_folder",
+      "description": "Get the date on which the item was last modified"
+    },
+    {
+      "name": "set_modification_date_of_item_of_folder",
+      "description": "Set the date on which the item was last modified"
+    },
+    {
+      "name": "get_modification_date_of_item_of_desktop_object",
+      "description": "Get the date on which the item was last modified"
+    },
+    {
+      "name": "set_modification_date_of_item_of_desktop_object",
+      "description": "Set the date on which the item was last modified"
+    },
+    {
+      "name": "get_modification_date_of_item_of_trash_object",
+      "description": "Get the date on which the item was last modified"
+    },
+    {
+      "name": "set_modification_date_of_item_of_trash_object",
+      "description": "Set the date on which the item was last modified"
+    },
+    {
+      "name": "get_icon_of_item",
+      "description": "Get the icon bitmap of the item"
+    },
+    {
+      "name": "set_icon_of_item",
+      "description": "Set the icon bitmap of the item"
+    },
+    {
+      "name": "get_icon_of_item_of_container",
+      "description": "Get the icon bitmap of the item"
+    },
+    {
+      "name": "set_icon_of_item_of_container",
+      "description": "Set the icon bitmap of the item"
+    },
+    {
+      "name": "get_icon_of_item_of_disk",
+      "description": "Get the icon bitmap of the item"
+    },
+    {
+      "name": "set_icon_of_item_of_disk",
+      "description": "Set the icon bitmap of the item"
+    },
+    {
+      "name": "get_icon_of_item_of_folder",
+      "description": "Get the icon bitmap of the item"
+    },
+    {
+      "name": "set_icon_of_item_of_folder",
+      "description": "Set the icon bitmap of the item"
+    },
+    {
+      "name": "get_icon_of_item_of_desktop_object",
+      "description": "Get the icon bitmap of the item"
+    },
+    {
+      "name": "set_icon_of_item_of_desktop_object",
+      "description": "Set the icon bitmap of the item"
+    },
+    {
+      "name": "get_icon_of_item_of_trash_object",
+      "description": "Get the icon bitmap of the item"
+    },
+    {
+      "name": "set_icon_of_item_of_trash_object",
+      "description": "Set the icon bitmap of the item"
+    },
+    {
+      "name": "get_url_of_item",
+      "description": "Get the URL of the item"
+    },
+    {
+      "name": "get_url_of_item_of_container",
+      "description": "Get the URL of the item"
+    },
+    {
+      "name": "get_url_of_item_of_disk",
+      "description": "Get the URL of the item"
+    },
+    {
+      "name": "get_url_of_item_of_folder",
+      "description": "Get the URL of the item"
+    },
+    {
+      "name": "get_url_of_item_of_desktop_object",
+      "description": "Get the URL of the item"
+    },
+    {
+      "name": "get_url_of_item_of_trash_object",
+      "description": "Get the URL of the item"
+    },
+    {
+      "name": "get_owner_of_item",
+      "description": "Get the user that owns the container of item"
+    },
+    {
+      "name": "set_owner_of_item",
+      "description": "Set the user that owns the container of item"
+    },
+    {
+      "name": "get_owner_of_item_of_container",
+      "description": "Get the user that owns the container of item"
+    },
+    {
+      "name": "set_owner_of_item_of_container",
+      "description": "Set the user that owns the container of item"
+    },
+    {
+      "name": "get_owner_of_item_of_disk",
+      "description": "Get the user that owns the container of item"
+    },
+    {
+      "name": "set_owner_of_item_of_disk",
+      "description": "Set the user that owns the container of item"
+    },
+    {
+      "name": "get_owner_of_item_of_folder",
+      "description": "Get the user that owns the container of item"
+    },
+    {
+      "name": "set_owner_of_item_of_folder",
+      "description": "Set the user that owns the container of item"
+    },
+    {
+      "name": "get_owner_of_item_of_desktop_object",
+      "description": "Get the user that owns the container of item"
+    },
+    {
+      "name": "set_owner_of_item_of_desktop_object",
+      "description": "Set the user that owns the container of item"
+    },
+    {
+      "name": "get_owner_of_item_of_trash_object",
+      "description": "Get the user that owns the container of item"
+    },
+    {
+      "name": "set_owner_of_item_of_trash_object",
+      "description": "Set the user that owns the container of item"
+    },
+    {
+      "name": "get_group_of_item",
+      "description": "Get the user or group that has special access to the container of item"
+    },
+    {
+      "name": "set_group_of_item",
+      "description": "Set the user or group that has special access to the container of item"
+    },
+    {
+      "name": "get_group_of_item_of_container",
+      "description": "Get the user or group that has special access to the container of item"
+    },
+    {
+      "name": "set_group_of_item_of_container",
+      "description": "Set the user or group that has special access to the container of item"
+    },
+    {
+      "name": "get_group_of_item_of_disk",
+      "description": "Get the user or group that has special access to the container of item"
+    },
+    {
+      "name": "set_group_of_item_of_disk",
+      "description": "Set the user or group that has special access to the container of item"
+    },
+    {
+      "name": "get_group_of_item_of_folder",
+      "description": "Get the user or group that has special access to the container of item"
+    },
+    {
+      "name": "set_group_of_item_of_folder",
+      "description": "Set the user or group that has special access to the container of item"
+    },
+    {
+      "name": "get_group_of_item_of_desktop_object",
+      "description": "Get the user or group that has special access to the container of item"
+    },
+    {
+      "name": "set_group_of_item_of_desktop_object",
+      "description": "Set the user or group that has special access to the container of item"
+    },
+    {
+      "name": "get_group_of_item_of_trash_object",
+      "description": "Get the user or group that has special access to the container of item"
+    },
+    {
+      "name": "set_group_of_item_of_trash_object",
+      "description": "Set the user or group that has special access to the container of item"
+    },
+    {
+      "name": "get_owner_privileges_of_item",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_owner_privileges_of_item",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_owner_privileges_of_item_of_container",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_owner_privileges_of_item_of_container",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_owner_privileges_of_item_of_disk",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_owner_privileges_of_item_of_disk",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_owner_privileges_of_item_of_folder",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_owner_privileges_of_item_of_folder",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_owner_privileges_of_item_of_desktop_object",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_owner_privileges_of_item_of_desktop_object",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_owner_privileges_of_item_of_trash_object",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_owner_privileges_of_item_of_trash_object",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_group_privileges_of_item",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_group_privileges_of_item",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_group_privileges_of_item_of_container",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_group_privileges_of_item_of_container",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_group_privileges_of_item_of_disk",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_group_privileges_of_item_of_disk",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_group_privileges_of_item_of_folder",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_group_privileges_of_item_of_folder",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_group_privileges_of_item_of_desktop_object",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_group_privileges_of_item_of_desktop_object",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_group_privileges_of_item_of_trash_object",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_group_privileges_of_item_of_trash_object",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_everyones_privileges_of_item",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_everyones_privileges_of_item",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_everyones_privileges_of_item_of_container",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_everyones_privileges_of_item_of_container",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_everyones_privileges_of_item_of_disk",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_everyones_privileges_of_item_of_disk",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_everyones_privileges_of_item_of_folder",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_everyones_privileges_of_item_of_folder",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_everyones_privileges_of_item_of_desktop_object",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_everyones_privileges_of_item_of_desktop_object",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_everyones_privileges_of_item_of_trash_object",
+      "description": "Get  of item"
+    },
+    {
+      "name": "set_everyones_privileges_of_item_of_trash_object",
+      "description": "Set  of item"
+    },
+    {
+      "name": "get_information_window_of_item",
+      "description": "Get the information window for the item"
+    },
+    {
+      "name": "get_information_window_of_item_of_container",
+      "description": "Get the information window for the item"
+    },
+    {
+      "name": "get_information_window_of_item_of_disk",
+      "description": "Get the information window for the item"
+    },
+    {
+      "name": "get_information_window_of_item_of_folder",
+      "description": "Get the information window for the item"
+    },
+    {
+      "name": "get_information_window_of_item_of_desktop_object",
+      "description": "Get the information window for the item"
+    },
+    {
+      "name": "get_information_window_of_item_of_trash_object",
+      "description": "Get the information window for the item"
+    },
+    {
+      "name": "get_properties_of_item",
+      "description": "Get every property of an item"
+    },
+    {
+      "name": "set_properties_of_item",
+      "description": "Set every property of an item"
+    },
+    {
+      "name": "get_properties_of_item_of_container",
+      "description": "Get every property of an item"
+    },
+    {
+      "name": "set_properties_of_item_of_container",
+      "description": "Set every property of an item"
+    },
+    {
+      "name": "get_properties_of_item_of_disk",
+      "description": "Get every property of an item"
+    },
+    {
+      "name": "set_properties_of_item_of_disk",
+      "description": "Set every property of an item"
+    },
+    {
+      "name": "get_properties_of_item_of_folder",
+      "description": "Get every property of an item"
+    },
+    {
+      "name": "set_properties_of_item_of_folder",
+      "description": "Set every property of an item"
+    },
+    {
+      "name": "get_properties_of_item_of_desktop_object",
+      "description": "Get every property of an item"
+    },
+    {
+      "name": "set_properties_of_item_of_desktop_object",
+      "description": "Set every property of an item"
+    },
+    {
+      "name": "get_properties_of_item_of_trash_object",
+      "description": "Get every property of an item"
+    },
+    {
+      "name": "set_properties_of_item_of_trash_object",
+      "description": "Set every property of an item"
+    },
+    {
+      "name": "get_class_of_item",
+      "description": "Get the class of the item"
+    },
+    {
+      "name": "get_class_of_item_of_container",
+      "description": "Get the class of the item"
+    },
+    {
+      "name": "get_class_of_item_of_disk",
+      "description": "Get the class of the item"
+    },
+    {
+      "name": "get_class_of_item_of_folder",
+      "description": "Get the class of the item"
+    },
+    {
+      "name": "get_class_of_item_of_desktop_object",
+      "description": "Get the class of the item"
+    },
+    {
+      "name": "get_class_of_item_of_trash_object",
+      "description": "Get the class of the item"
+    },
+    {
+      "name": "get_entire_contents_of_container",
+      "description": "Get the entire contents of the container, including the contents of its children"
+    },
+    {
+      "name": "get_entire_contents_of_container_of_disk",
+      "description": "Get the entire contents of the container, including the contents of its children"
+    },
+    {
+      "name": "get_entire_contents_of_container_of_folder",
+      "description": "Get the entire contents of the container, including the contents of its children"
+    },
+    {
+      "name": "get_entire_contents_of_container_of_desktop_object",
+      "description": "Get the entire contents of the container, including the contents of its children"
+    },
+    {
+      "name": "get_entire_contents_of_container_of_trash_object",
+      "description": "Get the entire contents of the container, including the contents of its children"
+    },
+    {
+      "name": "get_expandable_of_container",
+      "description": "Get (NOT AVAILABLE YET) Is the container capable of being expanded as an outline?"
+    },
+    {
+      "name": "get_expandable_of_container_of_disk",
+      "description": "Get (NOT AVAILABLE YET) Is the container capable of being expanded as an outline?"
+    },
+    {
+      "name": "get_expandable_of_container_of_folder",
+      "description": "Get (NOT AVAILABLE YET) Is the container capable of being expanded as an outline?"
+    },
+    {
+      "name": "get_expandable_of_container_of_desktop_object",
+      "description": "Get (NOT AVAILABLE YET) Is the container capable of being expanded as an outline?"
+    },
+    {
+      "name": "get_expandable_of_container_of_trash_object",
+      "description": "Get (NOT AVAILABLE YET) Is the container capable of being expanded as an outline?"
+    },
+    {
+      "name": "get_expanded_of_container",
+      "description": "Get (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_expanded_of_container",
+      "description": "Set (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_expanded_of_container_of_disk",
+      "description": "Get (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_expanded_of_container_of_disk",
+      "description": "Set (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_expanded_of_container_of_folder",
+      "description": "Get (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_expanded_of_container_of_folder",
+      "description": "Set (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_expanded_of_container_of_desktop_object",
+      "description": "Get (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_expanded_of_container_of_desktop_object",
+      "description": "Set (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_expanded_of_container_of_trash_object",
+      "description": "Get (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_expanded_of_container_of_trash_object",
+      "description": "Set (NOT AVAILABLE YET) Is the container opened as an outline? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_completely_expanded_of_container",
+      "description": "Get (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_completely_expanded_of_container",
+      "description": "Set (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_completely_expanded_of_container_of_disk",
+      "description": "Get (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_completely_expanded_of_container_of_disk",
+      "description": "Set (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_completely_expanded_of_container_of_folder",
+      "description": "Get (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_completely_expanded_of_container_of_folder",
+      "description": "Set (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_completely_expanded_of_container_of_desktop_object",
+      "description": "Get (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_completely_expanded_of_container_of_desktop_object",
+      "description": "Set (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_completely_expanded_of_container_of_trash_object",
+      "description": "Get (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "set_completely_expanded_of_container_of_trash_object",
+      "description": "Set (NOT AVAILABLE YET) Are the container and all of its children opened as outlines? (can only be set for containers viewed as lists)"
+    },
+    {
+      "name": "get_container_window_of_container",
+      "description": "Get the container window for this folder"
+    },
+    {
+      "name": "get_container_window_of_container_of_disk",
+      "description": "Get the container window for this folder"
+    },
+    {
+      "name": "get_container_window_of_container_of_folder",
+      "description": "Get the container window for this folder"
+    },
+    {
+      "name": "get_container_window_of_container_of_desktop_object",
+      "description": "Get the container window for this folder"
+    },
+    {
+      "name": "get_container_window_of_container_of_trash_object",
+      "description": "Get the container window for this folder"
+    },
+    {
+      "name": "get_id_of_disk",
+      "description": "Get the unique id for this disk (unchanged while disk remains connected and Finder remains running)"
+    },
+    {
+      "name": "get_id_of_disk_of_desktop_object",
+      "description": "Get the unique id for this disk (unchanged while disk remains connected and Finder remains running)"
+    },
+    {
+      "name": "get_capacity_of_disk",
+      "description": "Get the total number of bytes (free or used) on the disk"
+    },
+    {
+      "name": "get_capacity_of_disk_of_desktop_object",
+      "description": "Get the total number of bytes (free or used) on the disk"
+    },
+    {
+      "name": "get_free_space_of_disk",
+      "description": "Get the number of free bytes left on the disk"
+    },
+    {
+      "name": "get_free_space_of_disk_of_desktop_object",
+      "description": "Get the number of free bytes left on the disk"
+    },
+    {
+      "name": "get_ejectable_of_disk",
+      "description": "Get Can the media be ejected (floppies, CDs, and so on)? of disk"
+    },
+    {
+      "name": "get_ejectable_of_disk_of_desktop_object",
+      "description": "Get Can the media be ejected (floppies, CDs, and so on)? of disk"
+    },
+    {
+      "name": "get_local_volume_of_disk",
+      "description": "Get Is the media a local volume (as opposed to a file server)? of disk"
+    },
+    {
+      "name": "get_local_volume_of_disk_of_desktop_object",
+      "description": "Get Is the media a local volume (as opposed to a file server)? of disk"
+    },
+    {
+      "name": "get_startup_of_disk",
+      "description": "Get Is this disk the boot disk?"
+    },
+    {
+      "name": "get_startup_of_disk_of_desktop_object",
+      "description": "Get Is this disk the boot disk?"
+    },
+    {
+      "name": "get_format_of_disk",
+      "description": "Get the filesystem format of this disk"
+    },
+    {
+      "name": "get_format_of_disk_of_desktop_object",
+      "description": "Get the filesystem format of this disk"
+    },
+    {
+      "name": "get_journaling_enabled_of_disk",
+      "description": "Get Does this disk do file system journaling?"
+    },
+    {
+      "name": "get_journaling_enabled_of_disk_of_desktop_object",
+      "description": "Get Does this disk do file system journaling?"
+    },
+    {
+      "name": "get_ignore_privileges_of_disk",
+      "description": "Get Ignore permissions on this disk?"
+    },
+    {
+      "name": "set_ignore_privileges_of_disk",
+      "description": "Set Ignore permissions on this disk?"
+    },
+    {
+      "name": "get_ignore_privileges_of_disk_of_desktop_object",
+      "description": "Get Ignore permissions on this disk?"
+    },
+    {
+      "name": "set_ignore_privileges_of_disk_of_desktop_object",
+      "description": "Set Ignore permissions on this disk?"
+    },
+    {
+      "name": "get_warns_before_emptying_of_trash_object",
+      "description": "Get Display a dialog when emptying the trash? of trash-object"
+    },
+    {
+      "name": "set_warns_before_emptying_of_trash_object",
+      "description": "Set Display a dialog when emptying the trash? of trash-object"
+    },
+    {
+      "name": "get_file_type_of_file",
+      "description": "Get the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "set_file_type_of_file",
+      "description": "Set the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "get_file_type_of_file_of_container",
+      "description": "Get the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "set_file_type_of_file_of_container",
+      "description": "Set the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "get_file_type_of_file_of_disk",
+      "description": "Get the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "set_file_type_of_file_of_disk",
+      "description": "Set the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "get_file_type_of_file_of_folder",
+      "description": "Get the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "set_file_type_of_file_of_folder",
+      "description": "Set the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "get_file_type_of_file_of_desktop_object",
+      "description": "Get the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "set_file_type_of_file_of_desktop_object",
+      "description": "Set the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "get_file_type_of_file_of_trash_object",
+      "description": "Get the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "set_file_type_of_file_of_trash_object",
+      "description": "Set the OSType identifying the type of data contained in the item of file"
+    },
+    {
+      "name": "get_creator_type_of_file",
+      "description": "Get the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "set_creator_type_of_file",
+      "description": "Set the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "get_creator_type_of_file_of_container",
+      "description": "Get the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "set_creator_type_of_file_of_container",
+      "description": "Set the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "get_creator_type_of_file_of_disk",
+      "description": "Get the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "set_creator_type_of_file_of_disk",
+      "description": "Set the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "get_creator_type_of_file_of_folder",
+      "description": "Get the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "set_creator_type_of_file_of_folder",
+      "description": "Set the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "get_creator_type_of_file_of_desktop_object",
+      "description": "Get the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "set_creator_type_of_file_of_desktop_object",
+      "description": "Set the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "get_creator_type_of_file_of_trash_object",
+      "description": "Get the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "set_creator_type_of_file_of_trash_object",
+      "description": "Set the OSType identifying the application that created the item of file"
+    },
+    {
+      "name": "get_stationery_of_file",
+      "description": "Get Is the file a stationery pad?"
+    },
+    {
+      "name": "set_stationery_of_file",
+      "description": "Set Is the file a stationery pad?"
+    },
+    {
+      "name": "get_stationery_of_file_of_container",
+      "description": "Get Is the file a stationery pad?"
+    },
+    {
+      "name": "set_stationery_of_file_of_container",
+      "description": "Set Is the file a stationery pad?"
+    },
+    {
+      "name": "get_stationery_of_file_of_disk",
+      "description": "Get Is the file a stationery pad?"
+    },
+    {
+      "name": "set_stationery_of_file_of_disk",
+      "description": "Set Is the file a stationery pad?"
+    },
+    {
+      "name": "get_stationery_of_file_of_folder",
+      "description": "Get Is the file a stationery pad?"
+    },
+    {
+      "name": "set_stationery_of_file_of_folder",
+      "description": "Set Is the file a stationery pad?"
+    },
+    {
+      "name": "get_stationery_of_file_of_desktop_object",
+      "description": "Get Is the file a stationery pad?"
+    },
+    {
+      "name": "set_stationery_of_file_of_desktop_object",
+      "description": "Set Is the file a stationery pad?"
+    },
+    {
+      "name": "get_stationery_of_file_of_trash_object",
+      "description": "Get Is the file a stationery pad?"
+    },
+    {
+      "name": "set_stationery_of_file_of_trash_object",
+      "description": "Set Is the file a stationery pad?"
+    },
+    {
+      "name": "get_product_version_of_file",
+      "description": "Get the version of the product (visible at the top of the “Get Info” window) of file"
+    },
+    {
+      "name": "get_product_version_of_file_of_container",
+      "description": "Get the version of the product (visible at the top of the “Get Info” window) of file"
+    },
+    {
+      "name": "get_product_version_of_file_of_disk",
+      "description": "Get the version of the product (visible at the top of the “Get Info” window) of file"
+    },
+    {
+      "name": "get_product_version_of_file_of_folder",
+      "description": "Get the version of the product (visible at the top of the “Get Info” window) of file"
+    },
+    {
+      "name": "get_product_version_of_file_of_desktop_object",
+      "description": "Get the version of the product (visible at the top of the “Get Info” window) of file"
+    },
+    {
+      "name": "get_product_version_of_file_of_trash_object",
+      "description": "Get the version of the product (visible at the top of the “Get Info” window) of file"
+    },
+    {
+      "name": "get_version_of_file",
+      "description": "Get the version of the file (visible at the bottom of the “Get Info” window)"
+    },
+    {
+      "name": "get_version_of_file_of_container",
+      "description": "Get the version of the file (visible at the bottom of the “Get Info” window)"
+    },
+    {
+      "name": "get_version_of_file_of_disk",
+      "description": "Get the version of the file (visible at the bottom of the “Get Info” window)"
+    },
+    {
+      "name": "get_version_of_file_of_folder",
+      "description": "Get the version of the file (visible at the bottom of the “Get Info” window)"
+    },
+    {
+      "name": "get_version_of_file_of_desktop_object",
+      "description": "Get the version of the file (visible at the bottom of the “Get Info” window)"
+    },
+    {
+      "name": "get_version_of_file_of_trash_object",
+      "description": "Get the version of the file (visible at the bottom of the “Get Info” window)"
+    },
+    {
+      "name": "get_original_item_of_alias_file",
+      "description": "Get the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "set_original_item_of_alias_file",
+      "description": "Set the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "get_original_item_of_alias_file_of_container",
+      "description": "Get the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "set_original_item_of_alias_file_of_container",
+      "description": "Set the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "get_original_item_of_alias_file_of_disk",
+      "description": "Get the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "set_original_item_of_alias_file_of_disk",
+      "description": "Set the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "get_original_item_of_alias_file_of_folder",
+      "description": "Get the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "set_original_item_of_alias_file_of_folder",
+      "description": "Set the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "get_original_item_of_alias_file_of_desktop_object",
+      "description": "Get the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "set_original_item_of_alias_file_of_desktop_object",
+      "description": "Set the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "get_original_item_of_alias_file_of_trash_object",
+      "description": "Get the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "set_original_item_of_alias_file_of_trash_object",
+      "description": "Set the original item pointed to by the alias of alias file"
+    },
+    {
+      "name": "get_id_of_application_file",
+      "description": "Get the bundle identifier or creator type of the application of application file"
+    },
+    {
+      "name": "get_id_of_application_file_of_container",
+      "description": "Get the bundle identifier or creator type of the application of application file"
+    },
+    {
+      "name": "get_id_of_application_file_of_disk",
+      "description": "Get the bundle identifier or creator type of the application of application file"
+    },
+    {
+      "name": "get_id_of_application_file_of_folder",
+      "description": "Get the bundle identifier or creator type of the application of application file"
+    },
+    {
+      "name": "get_id_of_application_file_of_desktop_object",
+      "description": "Get the bundle identifier or creator type of the application of application file"
+    },
+    {
+      "name": "get_id_of_application_file_of_trash_object",
+      "description": "Get the bundle identifier or creator type of the application of application file"
+    },
+    {
+      "name": "get_suggested_size_of_application_file",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the developer recommends the application be launched of application file"
+    },
+    {
+      "name": "get_suggested_size_of_application_file_of_container",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the developer recommends the application be launched of application file"
+    },
+    {
+      "name": "get_suggested_size_of_application_file_of_disk",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the developer recommends the application be launched of application file"
+    },
+    {
+      "name": "get_suggested_size_of_application_file_of_folder",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the developer recommends the application be launched of application file"
+    },
+    {
+      "name": "get_suggested_size_of_application_file_of_desktop_object",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the developer recommends the application be launched of application file"
+    },
+    {
+      "name": "get_suggested_size_of_application_file_of_trash_object",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the developer recommends the application be launched of application file"
+    },
+    {
+      "name": "get_minimum_size_of_application_file",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "set_minimum_size_of_application_file",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "get_minimum_size_of_application_file_of_container",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "set_minimum_size_of_application_file_of_container",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "get_minimum_size_of_application_file_of_disk",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "set_minimum_size_of_application_file_of_disk",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "get_minimum_size_of_application_file_of_folder",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "set_minimum_size_of_application_file_of_folder",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "get_minimum_size_of_application_file_of_desktop_object",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "set_minimum_size_of_application_file_of_desktop_object",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "get_minimum_size_of_application_file_of_trash_object",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "set_minimum_size_of_application_file_of_trash_object",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the smallest memory size with which the application can be launched of application file"
+    },
+    {
+      "name": "get_preferred_size_of_application_file",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "set_preferred_size_of_application_file",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "get_preferred_size_of_application_file_of_container",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "set_preferred_size_of_application_file_of_container",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "get_preferred_size_of_application_file_of_disk",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "set_preferred_size_of_application_file_of_disk",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "get_preferred_size_of_application_file_of_folder",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "set_preferred_size_of_application_file_of_folder",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "get_preferred_size_of_application_file_of_desktop_object",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "set_preferred_size_of_application_file_of_desktop_object",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "get_preferred_size_of_application_file_of_trash_object",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "set_preferred_size_of_application_file_of_trash_object",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) the memory size with which the application will be launched of application file"
+    },
+    {
+      "name": "get_accepts_high_level_events_of_application_file",
+      "description": "Get Is the application high-level event aware? (OBSOLETE: always returns true) of application file"
+    },
+    {
+      "name": "get_accepts_high_level_events_of_application_file_of_container",
+      "description": "Get Is the application high-level event aware? (OBSOLETE: always returns true) of application file"
+    },
+    {
+      "name": "get_accepts_high_level_events_of_application_file_of_disk",
+      "description": "Get Is the application high-level event aware? (OBSOLETE: always returns true) of application file"
+    },
+    {
+      "name": "get_accepts_high_level_events_of_application_file_of_folder",
+      "description": "Get Is the application high-level event aware? (OBSOLETE: always returns true) of application file"
+    },
+    {
+      "name": "get_accepts_high_level_events_of_application_file_of_desktop",
+      "description": "Get Is the application high-level event aware? (OBSOLETE: always returns true) of application file"
+    },
+    {
+      "name": "get_accepts_high_level_events_of_application_file_of_trash",
+      "description": "Get Is the application high-level event aware? (OBSOLETE: always returns true) of application file"
+    },
+    {
+      "name": "get_has_scripting_terminology_of_application_file",
+      "description": "Get Does the process have a scripting terminology, i.e., can it be scripted? of application file"
+    },
+    {
+      "name": "get_has_scripting_terminology_of_application_file_of_container",
+      "description": "Get Does the process have a scripting terminology, i.e., can it be scripted? of application file"
+    },
+    {
+      "name": "get_has_scripting_terminology_of_application_file_of_disk",
+      "description": "Get Does the process have a scripting terminology, i.e., can it be scripted? of application file"
+    },
+    {
+      "name": "get_has_scripting_terminology_of_application_file_of_folder",
+      "description": "Get Does the process have a scripting terminology, i.e., can it be scripted? of application file"
+    },
+    {
+      "name": "get_has_scripting_terminology_of_application_file_of_desktop",
+      "description": "Get Does the process have a scripting terminology, i.e., can it be scripted? of application file"
+    },
+    {
+      "name": "get_has_scripting_terminology_of_application_file_of_trash",
+      "description": "Get Does the process have a scripting terminology, i.e., can it be scripted? of application file"
+    },
+    {
+      "name": "get_opens_in_classic_of_application_file",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "set_opens_in_classic_of_application_file",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "get_opens_in_classic_of_application_file_of_container",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "set_opens_in_classic_of_application_file_of_container",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "get_opens_in_classic_of_application_file_of_disk",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "set_opens_in_classic_of_application_file_of_disk",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "get_opens_in_classic_of_application_file_of_folder",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "set_opens_in_classic_of_application_file_of_folder",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "get_opens_in_classic_of_application_file_of_desktop_object",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "set_opens_in_classic_of_application_file_of_desktop_object",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "get_opens_in_classic_of_application_file_of_trash_object",
+      "description": "Get (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "set_opens_in_classic_of_application_file_of_trash_object",
+      "description": "Set (AVAILABLE IN 10.1 TO 10.4) Should the application launch in the Classic environment? of application file"
+    },
+    {
+      "name": "get_location_of_internet_location_file",
+      "description": "Get the internet location of internet location file"
+    },
+    {
+      "name": "get_location_of_internet_location_file_of_container",
+      "description": "Get the internet location of internet location file"
+    },
+    {
+      "name": "get_location_of_internet_location_file_of_disk",
+      "description": "Get the internet location of internet location file"
+    },
+    {
+      "name": "get_location_of_internet_location_file_of_folder",
+      "description": "Get the internet location of internet location file"
+    },
+    {
+      "name": "get_location_of_internet_location_file_of_desktop_object",
+      "description": "Get the internet location of internet location file"
+    },
+    {
+      "name": "get_location_of_internet_location_file_of_trash_object",
+      "description": "Get the internet location of internet location file"
+    },
+    {
+      "name": "get_clipping_window_of_clipping",
+      "description": "Get (NOT AVAILABLE YET) the clipping window for this clipping"
+    },
+    {
+      "name": "get_clipping_window_of_clipping_of_container",
+      "description": "Get (NOT AVAILABLE YET) the clipping window for this clipping"
+    },
+    {
+      "name": "get_clipping_window_of_clipping_of_disk",
+      "description": "Get (NOT AVAILABLE YET) the clipping window for this clipping"
+    },
+    {
+      "name": "get_clipping_window_of_clipping_of_folder",
+      "description": "Get (NOT AVAILABLE YET) the clipping window for this clipping"
+    },
+    {
+      "name": "get_clipping_window_of_clipping_of_desktop_object",
+      "description": "Get (NOT AVAILABLE YET) the clipping window for this clipping"
+    },
+    {
+      "name": "get_clipping_window_of_clipping_of_trash_object",
+      "description": "Get (NOT AVAILABLE YET) the clipping window for this clipping"
+    },
+    {
+      "name": "get_position_of_window",
+      "description": "Get the upper left position of the window"
+    },
+    {
+      "name": "set_position_of_window",
+      "description": "Set the upper left position of the window"
+    },
+    {
+      "name": "get_titled_of_window",
+      "description": "Get Does the window have a title bar?"
+    },
+    {
+      "name": "get_floating_of_window",
+      "description": "Get Does the window have a title bar?"
+    },
+    {
+      "name": "get_modal_of_window",
+      "description": "Get Is the window modal?"
+    },
+    {
+      "name": "get_collapsed_of_window",
+      "description": "Get Is the window collapsed"
+    },
+    {
+      "name": "set_collapsed_of_window",
+      "description": "Set Is the window collapsed"
+    },
+    {
+      "name": "get_properties_of_window",
+      "description": "Get every property of a window"
+    },
+    {
+      "name": "set_properties_of_window",
+      "description": "Set every property of a window"
+    },
+    {
+      "name": "get_target_of_finder_window",
+      "description": "Get the container at which this file viewer is targeted of Finder window"
+    },
+    {
+      "name": "set_target_of_finder_window",
+      "description": "Set the container at which this file viewer is targeted of Finder window"
+    },
+    {
+      "name": "get_current_view_of_finder_window",
+      "description": "Get the current view for the container window of Finder window"
+    },
+    {
+      "name": "set_current_view_of_finder_window",
+      "description": "Set the current view for the container window of Finder window"
+    },
+    {
+      "name": "get_icon_view_options_of_finder_window",
+      "description": "Get the icon view options for the container window of Finder window"
+    },
+    {
+      "name": "get_list_view_options_of_finder_window",
+      "description": "Get the list view options for the container window of Finder window"
+    },
+    {
+      "name": "get_column_view_options_of_finder_window",
+      "description": "Get the column view options for the container window of Finder window"
+    },
+    {
+      "name": "get_toolbar_visible_of_finder_window",
+      "description": "Get Is the window's toolbar visible? of Finder window"
+    },
+    {
+      "name": "set_toolbar_visible_of_finder_window",
+      "description": "Set Is the window's toolbar visible? of Finder window"
+    },
+    {
+      "name": "get_statusbar_visible_of_finder_window",
+      "description": "Get Is the window's status bar visible? of Finder window"
+    },
+    {
+      "name": "set_statusbar_visible_of_finder_window",
+      "description": "Set Is the window's status bar visible? of Finder window"
+    },
+    {
+      "name": "get_pathbar_visible_of_finder_window",
+      "description": "Get Is the window's path bar visible? of Finder window"
+    },
+    {
+      "name": "set_pathbar_visible_of_finder_window",
+      "description": "Set Is the window's path bar visible? of Finder window"
+    },
+    {
+      "name": "get_sidebar_width_of_finder_window",
+      "description": "Get the width of the sidebar for the container window of Finder window"
+    },
+    {
+      "name": "set_sidebar_width_of_finder_window",
+      "description": "Set the width of the sidebar for the container window of Finder window"
+    },
+    {
+      "name": "get_item_of_information_window",
+      "description": "Get the item from which this window was opened of information window"
+    },
+    {
+      "name": "get_current_panel_of_information_window",
+      "description": "Get the current panel in the information window"
+    },
+    {
+      "name": "set_current_panel_of_information_window",
+      "description": "Set the current panel in the information window"
+    },
+    {
+      "name": "get_current_panel_of_preferences_window",
+      "description": "Get The current panel in the Finder preferences window"
+    },
+    {
+      "name": "set_current_panel_of_preferences_window",
+      "description": "Set The current panel in the Finder preferences window"
+    },
+    {
+      "name": "restart",
+      "description": "Restart the computer"
+    },
+    {
+      "name": "shut_down",
+      "description": "Shut Down the computer"
+    },
+    {
+      "name": "sleep",
+      "description": "Put the computer to sleep"
+    },
+    {
+      "name": "get_desktop_picture_of_application",
+      "description": "Get the desktop picture of the main monitor of application"
+    },
+    {
+      "name": "set_desktop_picture_of_application",
+      "description": "Set the desktop picture of the main monitor of application"
+    },
+    {
+      "name": "get_name_of_process",
+      "description": "Get the name of the process"
+    },
+    {
+      "name": "get_visible_of_process",
+      "description": "Get Is the process' layer visible?"
+    },
+    {
+      "name": "set_visible_of_process",
+      "description": "Set Is the process' layer visible?"
+    },
+    {
+      "name": "get_frontmost_of_process",
+      "description": "Get Is the process the frontmost process?"
+    },
+    {
+      "name": "set_frontmost_of_process",
+      "description": "Set Is the process the frontmost process?"
+    },
+    {
+      "name": "get_file_of_process",
+      "description": "Get the file from which the process was launched"
+    },
+    {
+      "name": "get_file_type_of_process",
+      "description": "Get the OSType of the file type of the process"
+    },
+    {
+      "name": "get_creator_type_of_process",
+      "description": "Get the OSType of the creator of the process (the signature)"
+    },
+    {
+      "name": "get_accepts_high_level_events_of_process",
+      "description": "Get Is the process high-level event aware (accepts open application, open document, print document, and quit)?"
+    },
+    {
+      "name": "get_accepts_remote_events_of_process",
+      "description": "Get Does the process accept remote events?"
+    },
+    {
+      "name": "get_has_scripting_terminology_of_process",
+      "description": "Get Does the process have a scripting terminology, i.e., can it be scripted?"
+    },
+    {
+      "name": "get_total_partition_size_of_process",
+      "description": "Get the size of the partition with which the process was launched"
+    },
+    {
+      "name": "get_partition_space_used_of_process",
+      "description": "Get the number of bytes currently used in the process' partition"
+    },
+    {
+      "name": "get_application_file_of_application_process",
+      "description": "Get the application file from which this process was launched of application process"
+    },
+    {
+      "name": "get_desk_accessory_file_of_desk_accessory_process",
+      "description": "Get the desk accessory file from which this process was launched of desk accessory process"
+    },
+    {
+      "name": "get_window_of_preferences",
+      "description": "Get the window that would open if Finder preferences was opened"
+    },
+    {
+      "name": "get_icon_view_options_of_preferences",
+      "description": "Get the default icon view options of preferences"
+    },
+    {
+      "name": "get_list_view_options_of_preferences",
+      "description": "Get the default list view options of preferences"
+    },
+    {
+      "name": "get_column_view_options_of_preferences",
+      "description": "Get the column view options for all windows of preferences"
+    },
+    {
+      "name": "get_folders_spring_open_of_preferences",
+      "description": "Get Spring open folders after the specified delay? of preferences"
+    },
+    {
+      "name": "set_folders_spring_open_of_preferences",
+      "description": "Set Spring open folders after the specified delay? of preferences"
+    },
+    {
+      "name": "get_delay_before_springing_of_preferences",
+      "description": "Get the delay before springing open a container in seconds (from 0.167 to 1.169) of preferences"
+    },
+    {
+      "name": "set_delay_before_springing_of_preferences",
+      "description": "Set the delay before springing open a container in seconds (from 0.167 to 1.169) of preferences"
+    },
+    {
+      "name": "get_desktop_shows_hard_disks_of_preferences",
+      "description": "Get Hard disks appear on the desktop? of preferences"
+    },
+    {
+      "name": "set_desktop_shows_hard_disks_of_preferences",
+      "description": "Set Hard disks appear on the desktop? of preferences"
+    },
+    {
+      "name": "get_desktop_shows_external_hard_disks_of_preferences",
+      "description": "Get External hard disks appear on the desktop? of preferences"
+    },
+    {
+      "name": "set_desktop_shows_external_hard_disks_of_preferences",
+      "description": "Set External hard disks appear on the desktop? of preferences"
+    },
+    {
+      "name": "get_desktop_shows_removable_media_of_preferences",
+      "description": "Get CDs, DVDs, and iPods appear on the desktop? of preferences"
+    },
+    {
+      "name": "set_desktop_shows_removable_media_of_preferences",
+      "description": "Set CDs, DVDs, and iPods appear on the desktop? of preferences"
+    },
+    {
+      "name": "get_desktop_shows_connected_servers_of_preferences",
+      "description": "Get Connected servers appear on the desktop? of preferences"
+    },
+    {
+      "name": "set_desktop_shows_connected_servers_of_preferences",
+      "description": "Set Connected servers appear on the desktop? of preferences"
+    },
+    {
+      "name": "get_new_window_target_of_preferences",
+      "description": "Get target location for a newly-opened Finder window of preferences"
+    },
+    {
+      "name": "set_new_window_target_of_preferences",
+      "description": "Set target location for a newly-opened Finder window of preferences"
+    },
+    {
+      "name": "get_folders_open_in_new_windows_of_preferences",
+      "description": "Get Folders open into new windows? of preferences"
+    },
+    {
+      "name": "set_folders_open_in_new_windows_of_preferences",
+      "description": "Set Folders open into new windows? of preferences"
+    },
+    {
+      "name": "get_folders_open_in_new_tabs_of_preferences",
+      "description": "Get Folders open into new tabs? of preferences"
+    },
+    {
+      "name": "set_folders_open_in_new_tabs_of_preferences",
+      "description": "Set Folders open into new tabs? of preferences"
+    },
+    {
+      "name": "get_new_windows_open_in_column_view_of_preferences",
+      "description": "Get Open new windows in column view? of preferences"
+    },
+    {
+      "name": "set_new_windows_open_in_column_view_of_preferences",
+      "description": "Set Open new windows in column view? of preferences"
+    },
+    {
+      "name": "get_all_name_extensions_showing_of_preferences",
+      "description": "Get Show name extensions, even for items whose “extension hidden” is true? of preferences"
+    },
+    {
+      "name": "set_all_name_extensions_showing_of_preferences",
+      "description": "Set Show name extensions, even for items whose “extension hidden” is true? of preferences"
+    },
+    {
+      "name": "get_name_of_label",
+      "description": "Get the name associated with the label"
+    },
+    {
+      "name": "set_name_of_label",
+      "description": "Set the name associated with the label"
+    },
+    {
+      "name": "get_index_of_label",
+      "description": "Get the index in the front-to-back ordering within its container of label"
+    },
+    {
+      "name": "set_index_of_label",
+      "description": "Set the index in the front-to-back ordering within its container of label"
+    },
+    {
+      "name": "get_color_of_label",
+      "description": "Get the color associated with the label"
+    },
+    {
+      "name": "set_color_of_label",
+      "description": "Set the color associated with the label"
+    },
+    {
+      "name": "get_large_monochrome_icon_and_mask_of_icon_family",
+      "description": "Get the large black-and-white icon and the mask for large icons of icon family"
+    },
+    {
+      "name": "get_large_8_bit_mask_of_icon_family",
+      "description": "Get the large 8-bit mask for large 32-bit icons of icon family"
+    },
+    {
+      "name": "get_large_32_bit_icon_of_icon_family",
+      "description": "Get the large 32-bit color icon of icon family"
+    },
+    {
+      "name": "get_large_8_bit_icon_of_icon_family",
+      "description": "Get the large 8-bit color icon of icon family"
+    },
+    {
+      "name": "get_large_4_bit_icon_of_icon_family",
+      "description": "Get the large 4-bit color icon of icon family"
+    },
+    {
+      "name": "get_small_monochrome_icon_and_mask_of_icon_family",
+      "description": "Get the small black-and-white icon and the mask for small icons of icon family"
+    },
+    {
+      "name": "get_small_8_bit_mask_of_icon_family",
+      "description": "Get the small 8-bit mask for small 32-bit icons of icon family"
+    },
+    {
+      "name": "get_small_32_bit_icon_of_icon_family",
+      "description": "Get the small 32-bit color icon of icon family"
+    },
+    {
+      "name": "get_small_8_bit_icon_of_icon_family",
+      "description": "Get the small 8-bit color icon of icon family"
+    },
+    {
+      "name": "get_small_4_bit_icon_of_icon_family",
+      "description": "Get the small 4-bit color icon of icon family"
+    },
+    {
+      "name": "get_arrangement_of_icon_view_options",
+      "description": "Get the property by which to keep icons arranged of icon view options"
+    },
+    {
+      "name": "set_arrangement_of_icon_view_options",
+      "description": "Set the property by which to keep icons arranged of icon view options"
+    },
+    {
+      "name": "get_icon_size_of_icon_view_options",
+      "description": "Get the size of icons displayed in the icon view of icon view options"
+    },
+    {
+      "name": "set_icon_size_of_icon_view_options",
+      "description": "Set the size of icons displayed in the icon view of icon view options"
+    },
+    {
+      "name": "get_shows_item_info_of_icon_view_options",
+      "description": "Get additional info about an item displayed in icon view of icon view options"
+    },
+    {
+      "name": "set_shows_item_info_of_icon_view_options",
+      "description": "Set additional info about an item displayed in icon view of icon view options"
+    },
+    {
+      "name": "get_shows_icon_preview_of_icon_view_options",
+      "description": "Get displays a preview of the item in icon view of icon view options"
+    },
+    {
+      "name": "set_shows_icon_preview_of_icon_view_options",
+      "description": "Set displays a preview of the item in icon view of icon view options"
+    },
+    {
+      "name": "get_text_size_of_icon_view_options",
+      "description": "Get the size of the text displayed in the icon view of icon view options"
+    },
+    {
+      "name": "set_text_size_of_icon_view_options",
+      "description": "Set the size of the text displayed in the icon view of icon view options"
+    },
+    {
+      "name": "get_label_position_of_icon_view_options",
+      "description": "Get the location of the label in reference to the icon of icon view options"
+    },
+    {
+      "name": "set_label_position_of_icon_view_options",
+      "description": "Set the location of the label in reference to the icon of icon view options"
+    },
+    {
+      "name": "get_background_picture_of_icon_view_options",
+      "description": "Get the background picture of the icon view of icon view options"
+    },
+    {
+      "name": "set_background_picture_of_icon_view_options",
+      "description": "Set the background picture of the icon view of icon view options"
+    },
+    {
+      "name": "get_background_color_of_icon_view_options",
+      "description": "Get the background color of the icon view of icon view options"
+    },
+    {
+      "name": "set_background_color_of_icon_view_options",
+      "description": "Set the background color of the icon view of icon view options"
+    },
+    {
+      "name": "get_text_size_of_column_view_options",
+      "description": "Get the size of the text displayed in the column view of column view options"
+    },
+    {
+      "name": "set_text_size_of_column_view_options",
+      "description": "Set the size of the text displayed in the column view of column view options"
+    },
+    {
+      "name": "get_shows_icon_of_column_view_options",
+      "description": "Get displays an icon next to the label in column view of column view options"
+    },
+    {
+      "name": "set_shows_icon_of_column_view_options",
+      "description": "Set displays an icon next to the label in column view of column view options"
+    },
+    {
+      "name": "get_shows_icon_preview_of_column_view_options",
+      "description": "Get displays a preview of the item in column view of column view options"
+    },
+    {
+      "name": "set_shows_icon_preview_of_column_view_options",
+      "description": "Set displays a preview of the item in column view of column view options"
+    },
+    {
+      "name": "get_shows_preview_column_of_column_view_options",
+      "description": "Get displays the preview column in column view of column view options"
+    },
+    {
+      "name": "set_shows_preview_column_of_column_view_options",
+      "description": "Set displays the preview column in column view of column view options"
+    },
+    {
+      "name": "get_discloses_preview_pane_of_column_view_options",
+      "description": "Get discloses the preview pane of the preview column in column view of column view options"
+    },
+    {
+      "name": "set_discloses_preview_pane_of_column_view_options",
+      "description": "Set discloses the preview pane of the preview column in column view of column view options"
+    },
+    {
+      "name": "get_calculates_folder_sizes_of_list_view_options",
+      "description": "Get Are folder sizes calculated and displayed in the window? of list view options"
+    },
+    {
+      "name": "set_calculates_folder_sizes_of_list_view_options",
+      "description": "Set Are folder sizes calculated and displayed in the window? of list view options"
+    },
+    {
+      "name": "get_shows_icon_preview_of_list_view_options",
+      "description": "Get displays a preview of the item in list view of list view options"
+    },
+    {
+      "name": "set_shows_icon_preview_of_list_view_options",
+      "description": "Set displays a preview of the item in list view of list view options"
+    },
+    {
+      "name": "get_icon_size_of_list_view_options",
+      "description": "Get the size of icons displayed in the list view of list view options"
+    },
+    {
+      "name": "set_icon_size_of_list_view_options",
+      "description": "Set the size of icons displayed in the list view of list view options"
+    },
+    {
+      "name": "get_text_size_of_list_view_options",
+      "description": "Get the size of the text displayed in the list view of list view options"
+    },
+    {
+      "name": "set_text_size_of_list_view_options",
+      "description": "Set the size of the text displayed in the list view of list view options"
+    },
+    {
+      "name": "get_sort_column_of_list_view_options",
+      "description": "Get the column that the list view is sorted on of list view options"
+    },
+    {
+      "name": "set_sort_column_of_list_view_options",
+      "description": "Set the column that the list view is sorted on of list view options"
+    },
+    {
+      "name": "get_uses_relative_dates_of_list_view_options",
+      "description": "Get Are relative dates (e.g., today, yesterday) shown in the list view? of list view options"
+    },
+    {
+      "name": "set_uses_relative_dates_of_list_view_options",
+      "description": "Set Are relative dates (e.g., today, yesterday) shown in the list view? of list view options"
+    },
+    {
+      "name": "get_index_of_column",
+      "description": "Get the index in the front-to-back ordering within its container of column"
+    },
+    {
+      "name": "set_index_of_column",
+      "description": "Set the index in the front-to-back ordering within its container of column"
+    },
+    {
+      "name": "get_name_of_column",
+      "description": "Get the column name"
+    },
+    {
+      "name": "get_sort_direction_of_column",
+      "description": "Get The direction in which the window is sorted of column"
+    },
+    {
+      "name": "set_sort_direction_of_column",
+      "description": "Set The direction in which the window is sorted of column"
+    },
+    {
+      "name": "get_width_of_column",
+      "description": "Get the width of this column"
+    },
+    {
+      "name": "set_width_of_column",
+      "description": "Set the width of this column"
+    },
+    {
+      "name": "get_minimum_width_of_column",
+      "description": "Get the minimum allowed width of this column"
+    },
+    {
+      "name": "get_maximum_width_of_column",
+      "description": "Get the maximum allowed width of this column"
+    },
+    {
+      "name": "get_visible_of_column",
+      "description": "Get is this column visible"
+    },
+    {
+      "name": "set_visible_of_column",
+      "description": "Set is this column visible"
+    }
+  ],
+  "keywords": [
+    "finder",
+    "applescript",
+    "automation",
+    "hierarchy",
+    "static-data",
+    "class-structure"
+  ],
+  "compatibility": {
+    "platforms": [
+      "darwin"
+    ]
+  },
+  "name": "finder-applescript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stardae/finder-applescript"
+  }
+}
